@@ -66,9 +66,10 @@ def test_complete_pipeline():
     
     # Step 3: Check IDS conversions
     print("\n[3/5] Checking IDS conversions...")
+    output_dir = workspace_root / "output"
     for zip_file in zip_files:
         base_name = zip_file.stem
-        ids_file = extraction_dir / base_name / f"{base_name}.ids.json"
+        ids_file = output_dir / base_name / "json" / f"{base_name}.ids.json"
         
         if ids_file.exists():
             # Verify it's valid JSON with expected structure
@@ -101,7 +102,7 @@ def test_complete_pipeline():
     for zip_file in zip_files:
         base_name = zip_file.stem
         extracted_file = extraction_dir / base_name / f"{base_name}_extracted.json"
-        ids_file = extraction_dir / base_name / f"{base_name}.ids.json"
+        ids_file = output_dir / base_name / "json" / f"{base_name}.ids.json"
         
         if not extracted_file.exists() or not ids_file.exists():
             continue
@@ -136,7 +137,7 @@ def test_complete_pipeline():
     print("\n[5/5] Checking CSV export readiness...")
     for zip_file in zip_files:
         base_name = zip_file.stem
-        ids_file = extraction_dir / base_name / f"{base_name}.ids.json"
+        ids_file = output_dir / base_name / "json" / f"{base_name}.ids.json"
         
         if ids_file.exists():
             # Verify IDS structure is suitable for CSV export

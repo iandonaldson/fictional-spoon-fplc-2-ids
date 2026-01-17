@@ -66,7 +66,7 @@ fictional-spoon-fplc-2-ids/
 ├── data/
 │   └── akta/                   # Source AKTA .zip files
 ├── execution/                  # Individual processing scripts
-│   ├── extract_akta_v2.py      # AKTA data extraction
+│   ├── extract_akta.py         # AKTA data extraction
 │   ├── akta_to_ids.py          # IDS conversion + CSV export
 │   ├── test_extraction_coverage.py
 │   ├── validate_ids_conversion.py
@@ -77,15 +77,18 @@ fictional-spoon-fplc-2-ids/
 │   ├── IDS_DOCUMENTATION.md    # Schema documentation
 │   └── PyCORN_usage.md         # PyCORN API reference
 ├── .tmp/
-│   └── akta_extracted/         # Extracted data and IDS outputs
+│   └── akta_extracted/         # Temporary extraction files
 │       └── {sample}/
-│           ├── raw_files/      # Original extracted files
+│           ├── raw_files/      # Original extracted files from .zip
 │           ├── {sample}_extracted.json
-│           ├── {sample}_summary.json
-│           ├── {sample}.ids.json
-│           └── {sample}.ids.csv
+│           └── {sample}_summary.json
 └── output/
-    └── logs/                   # Timestamped execution logs
+    ├── logs/                   # Timestamped execution logs
+    └── {sample}/               # Final outputs per sample
+        ├── json/               # IDS JSON files
+        │   └── {sample}.ids.json
+        └── csv/                # CSV exports
+            └── {sample}.ids.csv
 ```
 
 ## Manual Execution
@@ -95,7 +98,7 @@ Individual pipeline steps can be run manually:
 ### 1. Extract AKTA Data
 
 ```bash
-python execution/extract_akta_v2.py --all .tmp/akta_extracted
+python execution/extract_akta.py --all .tmp/akta_extracted
 ```
 
 ### 2. Test Extraction Coverage
@@ -166,8 +169,7 @@ python orchestrate.py --clean
 
 ## Known Issues
 
-1. **extract_akta_v2.py**: Currently not extracting curve data properly - end-to-end test will fail. Use `--no-check-end2end` to skip this test.
-2. **Path handling**: All scripts use absolute paths to avoid working directory issues
+1. **Path handling**: All scripts use absolute paths to avoid working directory issues
 
 ## Documentation
 

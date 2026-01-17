@@ -113,13 +113,14 @@ def validate_all():
     
     # Use absolute paths
     workspace_root = Path(__file__).parent.parent
-    base_dir = workspace_root / ".tmp" / "akta_extracted"
+    base_dir_tmp = workspace_root / ".tmp" / "akta_extracted"
+    output_dir = workspace_root / "output"
     
-    # Find all IDS files in subdirectories
-    ids_files = list(base_dir.glob("*/*.ids.json"))
+    # Find all IDS files in output/{sample}/json/
+    ids_files = list(output_dir.glob("*/json/*.ids.json"))
     
     if not ids_files:
-        print("No IDS files found in .tmp/akta_extracted/")
+        print("No IDS files found in output/*/json/")
         return
     
     print(f"\n{'='*80}")
@@ -129,12 +130,15 @@ def validate_all():
     all_passed = True
     
     for ids_file in sorted(ids_files):
-        # Find corresponding extracted file in same directory
+        # Get sample name from path: output/{sample}/json/{file}
+        sample_name = ids_file.parent.parent.name
         base_name = ids_file.stem.replace('.ids', '')
-        extracted_file = ids_file.parent / f"{base_name}_extracted.json"
+        
+        # Find corresponding extracted file in .tmp/akta_extracted/{sample}/
+        extracted_file = base_dir_tmp / sample_name / f"{base_name}_extracted.json"
         
         if not extracted_file.exists():
-            print(f"✗ {ids_file.name}: Source file not found")
+            print(f"✗ {ids_file.name}: Source file not found at {extracted_file}")
             all_passed = False
             continue
         

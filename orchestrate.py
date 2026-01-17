@@ -42,7 +42,7 @@ class PipelineOrchestrator:
         self.timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         
         # Execution scripts
-        self.extract_script = self.workspace_root / "execution" / "extract_akta_v2.py"
+        self.extract_script = self.workspace_root / "execution" / "extract_akta.py"
         self.test_extraction_script = self.workspace_root / "execution" / "test_extraction_coverage.py"
         self.convert_script = self.workspace_root / "execution" / "akta_to_ids.py"
         self.validate_script = self.workspace_root / "execution" / "validate_ids_conversion.py"
@@ -257,8 +257,9 @@ class PipelineOrchestrator:
         self.log("STEP 6: Generate CSV Exports")
         self.log("="*80)
         
-        # Find all IDS files in subdirectories
-        ids_files = list(self.tmp_dir.glob("*/*.ids.json"))
+        # Find all IDS files in output/{sample}/json/ directories
+        output_dir = self.workspace_root / "output"
+        ids_files = list(output_dir.glob("*/json/*.ids.json"))
         
         if not ids_files:
             self.log("✗ No IDS files found to export", "ERROR")

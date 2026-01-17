@@ -1,0 +1,30 @@
+{
+  "timestamp": "20260117_131322",
+  "steps": {
+    "1_extract": {
+      "success": true,
+      "files": 1
+    },
+    "2_test_extraction": {
+      "success": true
+    },
+    "3_convert": {
+      "success": true,
+      "files": 4
+    },
+    "4_validate": {
+      "success": true
+    },
+    "5_end2end": {
+      "success": true
+    },
+    "6_csv_export": {
+      "success": true,
+      "files": 4
+    }
+  },
+  "files_processed": [
+    "sample.zip"
+  ],
+  "success": true
+}

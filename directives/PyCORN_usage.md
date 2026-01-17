@@ -319,5 +319,5 @@ If using a different version, the API may vary. Always verify with `dir(pc_uni6)
 ## See Also
 
 - [a2i.md](a2i.md) - AKTA to IDS converter directive
-- [extract_akta_v2.py](../execution/extract_akta_v2.py) - Working extraction script
+- [extract_akta.py](../execution/extract_akta.py) - Working extraction script
 - [test_pycorn.py](../execution/test_pycorn.py) - Basic PyCORN test

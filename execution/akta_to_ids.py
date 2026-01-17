@@ -26,7 +26,7 @@ def convert_akta_to_ids(extracted_file, output_file=None):
     extracted_file : str
         Path to extracted JSON file from extract_akta.py
     output_file : str, optional
-        Output path for IDS file. Defaults to <input>.ids.json
+        Output path for IDS file. Defaults to output/{sample}/json/{sample}.ids.json
     """
     
     print(f"\nConverting: {os.path.basename(extracted_file)}")
@@ -37,8 +37,16 @@ def convert_akta_to_ids(extracted_file, output_file=None):
     
     # Determine output file
     if output_file is None:
+        # Get sample name from extracted file
         base = Path(extracted_file).stem.replace('_extracted', '')
-        output_file = str(Path(extracted_file).parent / f"{base}.ids.json")
+        
+        # Create output directory: output/{sample}/json/
+        # Get workspace root from execution script location
+        workspace_root = Path(__file__).parent.parent  # Go up from execution/
+        output_dir = workspace_root / "output" / base / "json"
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        output_file = str(output_dir / f"{base}.ids.json")
     
     # Build IDS structure
     ids_data = {
@@ -268,7 +276,7 @@ def export_ids_to_csv(ids_file, output_csv=None):
     ids_file : str
         Path to IDS JSON file
     output_csv : str, optional
-        Output CSV path. Defaults to <input>.csv
+        Output CSV path. Defaults to output/{sample}/csv/{sample}.ids.csv
     """
     
     print(f"\nExporting to CSV: {os.path.basename(ids_file)}")
@@ -279,7 +287,22 @@ def export_ids_to_csv(ids_file, output_csv=None):
     
     # Determine output file
     if output_csv is None:
-        output_csv = str(Path(ids_file).with_suffix('.csv'))
+        # Get sample name from IDS file
+        ids_path = Path(ids_file)
+        base = ids_path.stem.replace('.ids', '')
+        
+        # Determine if file is in output/{sample}/json/ structure
+        if ids_path.parent.name == 'json' and ids_path.parent.parent.parent.name == 'output':
+            # Already in output/{sample}/json/, use output/{sample}/csv/
+            sample_dir = ids_path.parent.parent
+            output_dir = sample_dir / "csv"
+        else:
+            # Legacy location or other, create in output/{sample}/csv/
+            workspace_root = Path(__file__).parent.parent  # Go up from execution/
+            output_dir = workspace_root / "output" / base / "csv"
+        
+        output_dir.mkdir(parents=True, exist_ok=True)
+        output_csv = str(output_dir / f"{base}.ids.csv")
     
     # Build unified x-axis (use first sensor's x values as reference)
     if not ids_data['data']['sensors']:
