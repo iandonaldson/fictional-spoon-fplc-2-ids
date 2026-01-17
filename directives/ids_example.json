@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "source_format": "AKTA-UNICORN-6",
+    "source_file": "sample.zip",
+    "source_file_hash": "a3f5b2c1...",
+    "extraction_timestamp": "2026-01-16T18:30:00Z",
+    "extraction_tool": "PyCORN-0.20",
+    "converter_version": "1.0.0"
+  },
+  "run_info": {
+    "run_timestamp": "2023-03-10T16:30:07-05:00",
+    "run_id": "10MAR23_0.7mL_Col_60cm-h_Repacked_ColumnMAbNONBINDING_Pulse",
+    "run_name": "Manual Run 3",
+    "instrument": {
+      "manufacturer": "GE Healthcare",
+      "model": "AKTA Prime",
+      "software_version": "UNICORN 6.4"
+    },
+    "method": {
+      "name": "Soumi_ColumnSaltPulseTest_WithPurgeAndEq_Rev_00"
+    },
+    "column": {
+      "type": "SEC",
+      "volume_ml": 0.7
+    },
+    "operator": "prime"
+  },
+  "data": {
+    "curves": [
+      {
+        "curve_id": "UV_280nm",
+        "curve_type": "UV",
+        "curve_name": "UV 1_280",
+        "unit": "mAU",
+        "x_axis": {
+          "type": "volume",
+          "unit": "ml"
+        },
+        "data": [
+          [0.0, -0.0016426085494458675],
+          [0.001666667, -0.0016426085494458675],
+          [0.003333334, -0.0016426085494458675]
+        ],
+        "sampling_rate": 600.0,
+        "metadata": {
+          "wavelength_nm": 280
+        }
+      },
+      {
+        "curve_id": "UV_295nm",
+        "curve_type": "UV",
+        "curve_name": "UV 2_295",
+        "unit": "mAU",
+        "x_axis": {
+          "type": "volume",
+          "unit": "ml"
+        },
+        "data": [
+          [0.001666667, 0.007543441],
+          [0.01, 0.01129973],
+          [0.018333333, -0.04403979]
+        ],
+        "sampling_rate": 120.0,
+        "metadata": {
+          "wavelength_nm": 295
+        }
+      },
+      {
+        "curve_id": "Cond_01",
+        "curve_type": "Conductivity",
+        "curve_name": "Cond",
+        "unit": "mS/cm",
+        "x_axis": {
+          "type": "volume",
+          "unit": "ml"
+        },
+        "data": [
+          [0.0, 17.03917],
+          [0.003333333, 17.03911],
+          [0.006666666, 17.03902]
+        ],
+        "sampling_rate": 300.0
+      },
+      {
+        "curve_id": "Pressure_System",
+        "curve_type": "Pressure",
+        "curve_name": "System pressure",
+        "unit": "MPa",
+        "x_axis": {
+          "type": "volume",
+          "unit": "ml"
+        },
+        "data": [
+          [0.0, 0.002],
+          [0.001666667, 0.002],
+          [0.003333334, 0.003]
+        ],
+        "sampling_rate": 600.0
+      },
+      {
+        "curve_id": "pH_01",
+        "curve_type": "pH",
+        "curve_name": "pH",
+        "unit": "",
+        "x_axis": {
+          "type": "volume",
+          "unit": "ml"
+        },
+        "data": [
+          [0.01166667, 7.0],
+          [0.02833334, 7.0],
+          [0.045, 7.0]
+        ],
+        "sampling_rate": 60.0
+      },
+      {
+        "curve_id": "Flow_System",
+        "curve_type": "Flow",
+        "curve_name": "System flow",
+        "unit": "ml/min",
+        "x_axis": {
+          "type": "volume",
+          "unit": "ml"
+        },
+        "data": [
+          [0.005, 0.001],
+          [0.021666667, 0.7],
+          [0.038333333, 0.699]
+        ],
+        "sampling_rate": 60.0
+      },
+      {
+        "curve_id": "Temp_Cond",
+        "curve_type": "Temperature",
+        "curve_name": "Cond temp",
+        "unit": "°C",
+        "x_axis": {
+          "type": "volume",
+          "unit": "ml"
+        },
+        "data": [
+          [0.03333334, 25.0],
+          [0.06666667, 25.0],
+          [0.1, 25.0]
+        ],
+        "sampling_rate": 30.0
+      }
+    ],
+    "events": [
+      {
+        "event_id": "fraction_001",
+        "event_type": "fraction_start",
+        "event_name": "Fraction Start",
+        "position": {
+          "value": 13.57303,
+          "unit": "ml"
+        },
+        "text": "Frac"
+      },
+      {
+        "event_id": "injection_001",
+        "event_type": "injection",
+        "event_name": "Sample Injection",
+        "position": {
+          "value": 13.57932,
+          "unit": "ml"
+        },
+        "text": ""
+      },
+      {
+        "event_id": "fraction_002",
+        "event_type": "fraction_end",
+        "event_name": "Fraction End",
+        "position": {
+          "value": 15.77019,
+          "unit": "ml"
+        },
+        "text": "Waste"
+      }
+    ],
+    "peaks": []
+  }
+}

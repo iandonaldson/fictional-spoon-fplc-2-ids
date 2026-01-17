@@ -205,3 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# DOE Architecture - Project Specific
+.tmp/
+credentials.json
+token.json

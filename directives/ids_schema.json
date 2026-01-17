@@ -1,0 +1,403 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/iandonaldson/fictional-spoon-fplc-2-ids/ids_schema.json",
+  "title": "FPLC Intermediary Data Schema (IDS)",
+  "description": "Unified schema for chromatography data from multiple FPLC platforms (AKTA, BioRad, etc.)",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["schema_version", "metadata", "run_info", "data"],
+  
+  "properties": {
+    
+    "metadata": {
+      "description": "Information about the data file and extraction process",
+      "type": "object",
+      "required": ["source_format", "file_name", "extraction_timestamp"],
+      "properties": {
+        "source_format": {
+          "description": "Original file format identifier",
+          "type": "string",
+          "enum": ["AKTA-UNICORN-6", "AKTA-UNICORN-7", "BIORAD-NGCHROMATOGRAPHY", "BIORAD-CFXMAESTRO", "GENERIC"]
+        },
+        "file_name": {
+          "description": "Original filename",
+          "type": "string"
+        },
+        "extraction_timestamp": {
+          "description": "ISO 8601 timestamp when data was extracted to IDS format",
+          "type": "string",
+          "format": "date-time"
+        },
+        "extraction_tool": {
+          "description": "Tool used for extraction",
+          "type": "string",
+          "examples": ["PyCORN-0.20", "custom-parser-1.0"]
+        },
+        "schema_version": {
+          "description": "IDS schema version",
+          "type": "string",
+          "default": "1.0.0"
+        }
+      }
+    },
+    
+    "run_parameters": {
+      "description": "Chromatography run parameters and method information",
+      "type": "object",
+      "required": ["run_timestamp"],
+      "properties": {
+        "run_timestamp": {
+          "description": "ISO 8601 timestamp when the chromatography run was performed",
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "run_name": {
+          "description": "User-defined run name",
+          "type": ["string", "null"]
+        },
+        "run_id": {
+          "description": "Unique run identifier",
+          "type": ["string", "null"]
+        },
+        "instrument": {
+          "description": "Instrument information",
+          "type": "object",
+          "properties": {
+            "type": {
+              "description": "Instrument type/model",
+              "type": ["string", "null"],
+              "examples": ["AKTA Pure", "AKTA Prime", "BioRad NGC"]
+            },
+            "serial_number": {
+              "description": "Instrument serial number",
+              "type": ["string", "null"]
+            },
+            "software_version": {
+              "description": "Control software version",
+              "type": ["string", "null"]
+            }
+          }
+        },
+        "column": {
+          "description": "Column information",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "Column name or identifier",
+              "type": ["string", "null"]
+            },
+            "type": {
+              "description": "Column type (e.g., SEC, IEX, HIC)",
+              "type": ["string", "null"]
+            },
+            "volume_ml": {
+              "description": "Column volume in milliliters",
+              "type": ["number", "null"],
+              "minimum": 0
+            },
+            "length_cm": {
+              "description": "Column length in centimeters",
+              "type": ["number", "null"],
+              "minimum": 0
+            },
+            "diameter_cm": {
+              "description": "Column diameter in centimeters",
+              "type": ["number", "null"],
+              "minimum": 0
+            }
+          }
+        },
+        "method": {
+          "description": "Method/protocol information",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "Method name",
+              "type": ["string", "null"]
+            },
+            "description": {
+              "description": "Method description or notes",
+              "type": ["string", "null"]
+            },
+            "file_path": {
+              "description": "Path to method file if available",
+              "type": ["string", "null"]
+            }
+          }
+        },
+        "sample": {
+          "description": "Sample information",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "Sample name or identifier",
+              "type": ["string", "null"]
+            },
+            "volume_ml": {
+              "description": "Sample injection volume in milliliters",
+              "type": ["number", "null"],
+              "minimum": 0
+            },
+            "concentration": {
+              "description": "Sample concentration with unit",
+              "type": ["string", "null"]
+            }
+          }
+        }
+      }
+    },
+    
+    "sensor_data": {
+      "description": "Time-series sensor data from chromatography run",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["sensor_id", "sensor_type", "data_points"],
+        "properties": {
+          "sensor_id": {
+            "description": "Unique identifier for this sensor/curve",
+            "type": "string"
+          },
+          "sensor_type": {
+            "description": "Category of sensor",
+            "type": "string",
+            "enum": ["UV", "Conductivity", "Pressure", "Temperature", "pH", "Flow", "Concentration", "Other"]
+          },
+          "sensor_name": {
+            "description": "Descriptive name of sensor",
+            "type": "string",
+            "examples": ["UV 1_280", "Cond", "System pressure", "pH"]
+          },
+          "wavelength_nm": {
+            "description": "UV wavelength in nanometers (for UV sensors only)",
+            "type": ["number", "null"],
+            "minimum": 0
+          },
+          "unit": {
+            "description": "Measurement unit",
+            "type": "string",
+            "examples": ["mAU", "mS/cm", "MPa", "°C", "ml/min", "%"]
+          },
+          "sampling_rate_hz": {
+            "description": "Sampling rate in Hertz (if constant)",
+            "type": ["number", "null"],
+            "minimum": 0
+          },
+          "x_axis_type": {
+            "description": "Type of x-axis",
+            "type": "string",
+            "enum": ["volume", "time", "fraction"],
+            "default": "volume"
+          },
+          "x_axis_unit": {
+            "description": "Unit for x-axis",
+            "type": "string",
+            "examples": ["ml", "min", "sec"]
+          },
+          "data_points": {
+            "description": "Array of [x, y] measurement pairs",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "metadata": {
+            "description": "Additional sensor-specific metadata",
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    
+    "events": {
+      "description": "Discrete events during chromatography run (injections, fractions, log entries)",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event_id", "event_type", "position"],
+        "properties": {
+          "event_id": {
+            "description": "Unique identifier for this event",
+            "type": "string"
+          },
+          "event_type": {
+            "description": "Category of event",
+            "type": "string",
+            "enum": ["injection", "fraction_start", "fraction_end", "alarm", "phase_change", "logbook", "mark", "other"]
+          },
+          "event_name": {
+            "description": "Descriptive name or label",
+            "type": ["string", "null"]
+          },
+          "position": {
+            "description": "Position where event occurred",
+            "type": "object",
+            "properties": {
+              "volume_ml": {
+                "description": "Volume position in milliliters",
+                "type": ["number", "null"]
+              },
+              "time_min": {
+                "description": "Time position in minutes",
+                "type": ["number", "null"]
+              },
+              "timestamp": {
+                "description": "Absolute timestamp of event",
+                "type": ["string", "null"],
+                "format": "date-time"
+              }
+            }
+          },
+          "description": {
+            "description": "Event description or text",
+            "type": ["string", "null"]
+          },
+          "metadata": {
+            "description": "Additional event-specific data",
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    
+    "peaks": {
+      "description": "Detected or integrated peaks",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["peak_id", "sensor_id"],
+        "properties": {
+          "peak_id": {
+            "description": "Unique identifier for this peak",
+            "type": "string"
+          },
+          "sensor_id": {
+            "description": "Reference to sensor where peak was detected",
+            "type": "string"
+          },
+          "peak_number": {
+            "description": "Sequential peak number",
+            "type": ["integer", "null"],
+            "minimum": 1
+          },
+          "retention_volume_ml": {
+            "description": "Retention volume in milliliters",
+            "type": ["number", "null"]
+          },
+          "retention_time_min": {
+            "description": "Retention time in minutes",
+            "type": ["number", "null"]
+          },
+          "height": {
+            "description": "Peak height (in sensor units)",
+            "type": ["number", "null"]
+          },
+          "area": {
+            "description": "Peak area (in sensor units × volume/time)",
+            "type": ["number", "null"]
+          },
+          "width": {
+            "description": "Peak width at specified level",
+            "type": ["number", "null"]
+          },
+          "width_method": {
+            "description": "Method used to calculate width",
+            "type": ["string", "null"],
+            "examples": ["baseline", "half_height", "inflection"]
+          },
+          "start_position": {
+            "description": "Peak start position (volume or time)",
+            "type": ["number", "null"]
+          },
+          "end_position": {
+            "description": "Peak end position (volume or time)",
+            "type": ["number", "null"]
+          },
+          "asymmetry": {
+            "description": "Peak asymmetry factor",
+            "type": ["number", "null"]
+          },
+          "theoretical_plates": {
+            "description": "Number of theoretical plates",
+            "type": ["number", "null"]
+          },
+          "resolution": {
+            "description": "Resolution relative to previous peak",
+            "type": ["number", "null"]
+          },
+          "percent_total_area": {
+            "description": "Percentage of total integrated area",
+            "type": ["number", "null"],
+            "minimum": 0,
+            "maximum": 100
+          },
+          "classification": {
+            "description": "Peak classification or annotation",
+            "type": ["string", "null"],
+            "examples": ["monomer", "aggregate", "fragment", "void"]
+          }
+        }
+      }
+    },
+    
+    "fractions": {
+      "description": "Collected fractions",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fraction_id"],
+        "properties": {
+          "fraction_id": {
+            "description": "Unique fraction identifier",
+            "type": "string"
+          },
+          "fraction_number": {
+            "description": "Sequential fraction number",
+            "type": ["integer", "null"],
+            "minimum": 1
+          },
+          "well_position": {
+            "description": "Well plate position if applicable",
+            "type": ["string", "null"],
+            "examples": ["A1", "B12"]
+          },
+          "start_volume_ml": {
+            "description": "Start volume in milliliters",
+            "type": ["number", "null"]
+          },
+          "end_volume_ml": {
+            "description": "End volume in milliliters",
+            "type": ["number", "null"]
+          },
+          "volume_ml": {
+            "description": "Collected volume in milliliters",
+            "type": ["number", "null"]
+          },
+          "peak_id": {
+            "description": "Associated peak ID if fraction is peak-based",
+            "type": ["string", "null"]
+          },
+          "notes": {
+            "description": "Fraction notes or annotations",
+            "type": ["string", "null"]
+          }
+        }
+      }
+    },
+    
+    "custom_data": {
+      "description": "Format-specific or custom data that doesn't fit standard schema",
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

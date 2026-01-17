@@ -1,0 +1,9 @@
+# Python dependencies for execution scripts
+# Install with: pip install -r requirements.txt
+
+python-dotenv>=1.0.0
+xmltodict>=0.13.0
+
+# PyCORN for AKTA file parsing (UNICORN 6+ zip format)
+# Note: Install from GitHub due to missing README.rst in PyPI
+# git+https://github.com/ronald-jaepel/PyCORN.git@master

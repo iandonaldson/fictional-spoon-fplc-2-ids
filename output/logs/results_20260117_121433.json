@@ -1,0 +1,30 @@
+{
+  "timestamp": "20260117_121433",
+  "steps": {
+    "1_extract": {
+      "success": true,
+      "files": 4
+    },
+    "2_test_extraction": {
+      "success": true
+    },
+    "3_convert": {
+      "success": true,
+      "files": 4
+    },
+    "4_validate": {
+      "success": true
+    },
+    "6_csv_export": {
+      "success": true,
+      "files": 4
+    }
+  },
+  "files_processed": [
+    "2025.03.12_PPLOT00335_SEC_AB_3678571_Anti-PD1_pere.zip",
+    "2025.10.10_PPLOT00367_SEC_AB_2819341_Anti-CD20_2B8R1F8_Afucosylated.zip",
+    "2025.10.14_PPLOT00443_SEC_AB_2819341_Anti-CD20_2B8R1F8_Afucosylated.zip",
+    "sample.zip"
+  ],
+  "success": true
+}
