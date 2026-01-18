@@ -1,0 +1,137 @@
+{
+  "stage_1_raw_files": {
+    "MethodData": {
+      "exists": true,
+      "size_bytes": 10288,
+      "is_zip": true,
+      "contains_xml": true,
+      "xml_root_tag": null,
+      "content_preview": "\u0000\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0006\u0001\u0000\u0000\u0000\t<Method xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" FormatVersion=\"8\" UNICORNVersion=\"7.3.0.473\"><Description>Soumi_ColumnSaltPulseTest_WithPurgeAndEq_Rev_00</Description><SystemName>AKTA Pure 2350181</SystemName><IsLegacy>false</IsLegacy><CreatedBy>Default</CreatedBy><Created>2023-03-03T11:07:00.089</Created><CreatedUtcOffsetMinutes>-300</CreatedUtcOffsetMinutes><LastModifiedBy>Default</LastModifiedBy><LastModified>2023-03-03T11:08:57.925</LastModified><LastModified",
+      "zip_contents": [
+        "XmlDataType",
+        "Xml"
+      ],
+      "xml_parse_error": "not well-formed (invalid token): line 1, column 0"
+    },
+    "SystemData": {
+      "exists": true,
+      "size_bytes": 5144,
+      "is_zip": true,
+      "contains_xml": true,
+      "xml_root_tag": null,
+      "content_preview": "\u0000\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0006\u0001\u0000\u0000\u0000\u0001<Systems xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" FormatVersion=\"3\" UNICORNVersion=\"7.3.0.473\"><System SystemType=\"NEXTAKTAchromatography\"><Name>AKTA Pure 2350181</Name><ComputerName>DESKTOP-JG88QSN</ComputerName><InstrumentConfiguration Description=\"AKTA pure 25\" Version=\"1.9.0.11\" /><SystemCommunicationType>Ethernet</SystemCommunicationType><IsDeleted>false</IsDeleted><RemotingPort>40502</RemotingPort><EnabledComponents><EnabledComponent><Name>Accumulator wash</",
+      "zip_contents": [
+        "XmlDataType",
+        "Xml"
+      ],
+      "xml_parse_error": "not well-formed (invalid token): line 1, column 0"
+    },
+    "CalibrationSettingData": {
+      "exists": true,
+      "size_bytes": 1254,
+      "is_zip": true,
+      "contains_xml": true,
+      "xml_root_tag": null,
+      "content_preview": "\u0000\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0006\u0001\u0000\u0000\u0000\u000f<CalibrationSettings xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" FormatVersion=\"2\" UNICORNVersion=\"7.3.0.473\"><CalibrationSetting><Operator>Default</Operator><IsLocallyCalibrated>false</IsLocallyCalibrated><CalibrationPointSettings><CalibrationPointSetting><CalibrationPos>1</CalibrationPos><ReferenceValue>7</ReferenceValue><Unit></Unit></CalibrationPointSetting><CalibrationPointSetting><CalibrationPos>2</CalibrationPos><ReferenceValue>4.01</ReferenceValue><Unit></Uni",
+      "zip_contents": [
+        "XmlDataType",
+        "Xml"
+      ],
+      "xml_parse_error": "not well-formed (invalid token): line 1, column 0"
+    },
+    "InstrumentConfigurationData": {
+      "exists": true,
+      "size_bytes": 1286,
+      "is_zip": true,
+      "contains_xml": true,
+      "xml_root_tag": null,
+      "content_preview": "\u0000\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0006\u0001\u0000\u0000\u0000\u000b<InstrumentConfigurationDesc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" FormatVersion=\"4\" UNICORNVersion=\"7.3.0.473\"><Description>AKTA pure 25</Description><Version>1.9.0.11</Version><SupportedUNICORNVersion>6.3.0.0</SupportedUNICORNVersion><HelpText>AKTA pure 25 instrument configuration</HelpText><FirmwareName>AKTA pure</FirmwareName><FirmwareVersion>4.17.15.0</FirmwareVersion><PerformanceTestMethodLibraryName>AKTA pure</PerformanceTestMethodLibraryName><Performanc",
+      "zip_contents": [
+        "XmlDataType",
+        "Xml"
+      ],
+      "xml_parse_error": "not well-formed (invalid token): line 1, column 0"
+    },
+    "StrategyData": {
+      "exists": true,
+      "size_bytes": 2572,
+      "is_zip": true,
+      "contains_xml": true,
+      "xml_root_tag": null,
+      "content_preview": "\u0000\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0006\u0001\u0000\u0000\u0000[<?xml version=\"1.0\" encoding=\"utf-8\"?><StrategyInformation FormatVersion=\"3\"><StrategyName>AKTApure25_105</StrategyName><StrategyVersion>0.4.2.8</StrategyVersion><StrategyNotes>.\r\n</StrategyNotes><HasBufferPrep>False</HasBufferPrep><HasNextFrac>True</HasNextFrac><HasFrac950>False</HasFrac950><Curves><Curve><CurveNumber>1</CurveNumber><CurveName>UV 1</CurveName><IsDefaultVisible>True</IsDefaultVisible><YAxisDefaultTypeName>Auto</YAxisDefaultTypeName><DefaultBase>Volume</Default",
+      "zip_contents": [
+        "XmlDataType",
+        "Xml"
+      ],
+      "xml_parse_error": "not well-formed (invalid token): line 1, column 0"
+    },
+    "ColumnIndividualData": {
+      "exists": true,
+      "size_bytes": 512,
+      "is_zip": true,
+      "contains_xml": true,
+      "xml_root_tag": null,
+      "content_preview": "\u0000\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0006\u0001\u0000\u0000\u0000\u0000\u000b",
+      "zip_contents": [
+        "XmlDataType",
+        "Xml"
+      ],
+      "xml_parse_error": "not well-formed (invalid token): line 1, column 0"
+    },
+    "ColumnTypeData": {
+      "exists": true,
+      "size_bytes": 512,
+      "is_zip": true,
+      "contains_xml": true,
+      "xml_root_tag": null,
+      "content_preview": "\u0000\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0006\u0001\u0000\u0000\u0000E<ColumnTypes xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />\u000b",
+      "zip_contents": [
+        "XmlDataType",
+        "Xml"
+      ],
+      "xml_parse_error": "not well-formed (invalid token): line 1, column 0"
+    }
+  },
+  "stage_2_extracted_json": {
+    "extracted": {
+      "exists": true,
+      "has_metadata": true,
+      "metadata_keys": [
+        "source_file",
+        "extraction_date",
+        "pycorn_version",
+        "file_date",
+        "raw_files_count",
+        "metadata_files_parsed"
+      ],
+      "has_method_data": false,
+      "has_chromatograms": true,
+      "curve_count": 20,
+      "total_data_points": 97980,
+      "top_level_keys": [
+        "metadata",
+        "chromatograms"
+      ],
+      "metadata_files_parsed": []
+    }
+  },
+  "stage_3_ids_output": {
+    "exists": true,
+    "schema_version": "1.0.0",
+    "has_method_info": true,
+    "method_fields": {
+      "name": null,
+      "description": null,
+      "file_path": null
+    },
+    "sensor_count": 20,
+    "total_data_points": 97980,
+    "top_level_keys": [
+      "schema_version",
+      "metadata",
+      "run_info",
+      "data",
+      "custom_data"
+    ]
+  }
+}
